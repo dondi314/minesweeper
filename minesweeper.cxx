@@ -10,7 +10,16 @@ class square {
     int adj;
     int i;
     int j;
+    square(int, int, int, bool, bool);
 };
+
+square::square(int a,int b, int adj_ = 0, bool bomb_ = false, bool naked_ = false) {
+  i = a;
+  j = b;
+  adj = adj_;
+  bomb = bomb_;
+  naked = naked_;
+}
 
 class minesweeper {
   private:
@@ -75,12 +84,7 @@ void minesweeper::create_board(int row_, int col_, int bombs_) {
   for (int i = 0; i < row; i++) {
     std::vector<square> vec;
     for (int j = 0; j < col; j++) {
-      square a;
-      a.i = i;
-      a.j = j;
-      a.naked = false;
-      a.bomb = false;
-      a.adj = 0; 
+      square a(i, j); 
       vec.push_back(a);
     }
     board.push_back(vec);   
